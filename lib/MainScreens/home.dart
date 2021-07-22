@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/Components/Categories.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -72,6 +73,43 @@ class _HomePageState extends State<HomePage> {
 
             ),
           ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                BrandCategory(
+                  categoryName: "T-shirts " ,
+                  imageLocation: "assets/images/T-Shirt.png" ,
+                ),
+                BrandCategory(
+                  categoryName: "Jackets " ,
+                  imageLocation: "assets/images/Jacket.png" ,
+                ),
+                BrandCategory(
+                  categoryName: "Shirts " ,
+                  imageLocation: "assets/images/shirt.png" ,
+                ),
+                BrandCategory(
+                  categoryName: "Trouser " ,
+                  imageLocation: "assets/images/Trouser.png" ,
+                ),
+                BrandCategory(
+                  categoryName: "Babes Dress" ,
+                  imageLocation: "assets/images/girlsBabyDress.jpg" ,
+                ),
+                BrandCategory(
+                  categoryName: "Babes Wear" ,
+                  imageLocation: "assets/images/babesWear.png" ,
+                ),
+                BrandCategory(
+                  categoryName: "Shoes" ,
+                  imageLocation: "assets/images/Shoes.png" ,
+                ),
+
+              ],
+            ),
+          )
         ],
       ),
     );
