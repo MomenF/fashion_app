@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'MainScreens/Register.dart';
 import 'MainScreens/SplashScreen.dart';
 import 'MainScreens/home.dart';
+import 'MainScreens/product_details.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         "/loginPage" : (context)=> LoginPage(),
         "/home" : (context)=> HomePage(),
         "/Register" : (context)=> RegisterPage(),
+        "/productDetails" : (context)=> ProductDetails(),
       },
     );
   }

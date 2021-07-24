@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/Components/Categories.dart';
+import 'package:e_commerce_app/Components/products.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -54,28 +55,43 @@ class _HomePageState extends State<HomePage> {
         ),
 
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 200,
-            child: Carousel(
-              images: [
-                Image.asset('assets/images/1.jpg',fit: BoxFit.fill,),
-                Image.asset('assets/images/2.jpg',fit: BoxFit.fill,),
-                Image.asset('assets/images/3.jpg',fit: BoxFit.fill,),
-                Image.asset('assets/images/4.jpg',fit: BoxFit.fill,),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 200,
+              child: Carousel(
+                images: [
+                  Image.asset('assets/images/1.jpg',fit: BoxFit.fill,),
+                  Image.asset('assets/images/2.jpg',fit: BoxFit.fill,),
+                  Image.asset('assets/images/3.jpg',fit: BoxFit.fill,),
+                  Image.asset('assets/images/4.jpg',fit: BoxFit.fill,),
 
-              ],
-              boxFit: BoxFit.cover,
-                dotSize: 5,
-              autoplay: true,
-              autoplayDuration: Duration(seconds: 5),
+                ],
+                boxFit: BoxFit.cover,
+                  dotSize: 5,
+                autoplay: true,
+                autoplayDuration: Duration(seconds: 5),
 
+              ),
             ),
-          ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: const EdgeInsets.only(
+                left: 10
+              ),
+                child: Text('Categories',style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),)),
+            SizedBox(
+              height: 10,
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 BrandCategory(
@@ -108,9 +124,31 @@ class _HomePageState extends State<HomePage> {
                 ),
 
               ],
+                ),
             ),
-          )
-        ],
+            Divider(
+              thickness: 1,
+              height: 15,
+            ),
+            Container(
+                margin: const EdgeInsets.only(
+                    left: 15
+                ),
+                padding:const EdgeInsets.only(
+                  bottom: 20,
+                  top: 10
+                ) ,
+                child: Text('Recent Products',style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),)),
+            Container(
+              color: Colors.redAccent.withOpacity(.5),
+              child: Products(),
+            )
+
+
+          ],
+        ),
       ),
     );
   }
