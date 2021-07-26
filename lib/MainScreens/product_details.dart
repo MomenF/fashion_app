@@ -9,13 +9,18 @@ class ProductDetails extends StatefulWidget {
   late final  productDetailPic;
   late final  productDetailOldPrice;
   late final  productDetailPrice;
+  late final  productDetailCondition;
+
 
 
   ProductDetails(
       {this.productDetailName,
       this.productDetailPic,
       this.productDetailOldPrice,
-      this.productDetailPrice});
+      this.productDetailPrice,
+      this.productDetailCondition,
+
+      });
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -52,6 +57,16 @@ class _ProductDetailsState extends State<ProductDetails> {
             Container(
               height: 300,
               child: GridTile(
+                header: Row(
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.teal.withOpacity(.4),
+                      child: Text(widget.productDetailCondition,style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: widget.productDetailCondition == "New"?Colors.blue:Colors.red,
+                      ),),),
+                  ],
+                ),
                 child: Image.asset("${widget.productDetailPic}"),
                 footer: Container(
                   color: Colors.lightBlueAccent.withOpacity(.4),
@@ -122,7 +137,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                       showDialog(context: context, builder: (context){
                         return AlertDialog(
                           title: Text("Size"),
-                          content: Text("Choose the Size"),
+                          content: Column(
+                            children: [
+                              Text("Choose the Size"),
+                            ],
+                          ),
                           actions: [
                             MaterialButton(
                                 onPressed: (){
@@ -131,8 +150,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                               child: Text("Cancel"),
                               textColor: Colors.lightBlue,
 
-                            )
+                            ),
                           ],
+
                         );
                       });
                       },
