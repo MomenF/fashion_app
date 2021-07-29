@@ -106,50 +106,51 @@ class SingleProduct extends StatelessWidget {
             productDetailCondition: this.productCondition,
           )));
         },
-        child: GridTile(
-          header: Row(
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.teal.withOpacity(.4),
-                child: Text(productCondition,style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: productCondition == "New"?Colors.blue:Colors.red,
-              ),),),
-            ],
-          ),
-          footer: Container(
-            color: Colors.grey.withOpacity(.4),
-            child: ListTile(
-              title: Text(
-                productName,
-                style: TextStyle(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Banner(
+              location: BannerLocation.topStart,
+              message: productCondition,
+              color:  productCondition == "New"?Colors.blue:Colors.red,
+              textStyle: TextStyle(
+                  fontSize: 15,
                 fontWeight: FontWeight.bold
               ),
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
 
+              // textStyle: ,
+            
+            child: GridTile(
+              footer: Container(
+                color: Colors.grey.withOpacity(.4),
+                child: ListTile(
+                  title: Text(
+                    productName,
+                    style: TextStyle(
+                    fontWeight: FontWeight.bold
+                  ),
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+
+                  ),
+                  trailing: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("\$${productPrice}",style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),),
+                      Text("\$${productOldPrice}",style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.lineThrough,
+                        decorationThickness: 3,
+                      ),),
+                    ],
+                  ),
+                ),
               ),
-              trailing: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("\$${productPrice}",style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),),
-                  Text("\$${productOldPrice}",style: TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.lineThrough,
-                    decorationThickness: 3,
-                  ),),
-                ],
-              ),
+              child: Image.asset(productPic),
             ),
-          ),
-          child: Column(
-            children: [
-              Image.asset(productPic),
-            ],
           ),
         ),
       ),

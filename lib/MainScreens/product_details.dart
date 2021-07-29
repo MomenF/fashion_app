@@ -56,56 +56,58 @@ class _ProductDetailsState extends State<ProductDetails> {
     //============Image=============
             Container(
               height: 300,
-              child: GridTile(
-                header: Row(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: Colors.teal.withOpacity(.4),
-                      child: Text(widget.productDetailCondition,style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: widget.productDetailCondition == "New"?Colors.blue:Colors.red,
-                      ),),),
-                  ],
-                ),
-                child: Image.asset("${widget.productDetailPic}"),
-                footer: Container(
-                  color: Colors.lightBlueAccent.withOpacity(.4),
-                  child: ListTile(
-                    leading:Container(
-                      width: 200,
-                      child:  Text(widget.productDetailName,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                    ),
-                       maxLines: 4,
-                    ),),
-
-                    subtitle: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-
-                        Text(
-                          "\$${widget.productDetailOldPrice}",style: TextStyle(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Banner(
+                  location: BannerLocation.topStart,
+                  message: widget.productDetailCondition,
+                  color:  widget.productDetailCondition == "New"?Colors.blue:Colors.red,
+                  textStyle: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold
+                  ),
+                  child: GridTile(
+                    child: Image.asset("${widget.productDetailPic}"),
+                    footer: Container(
+                      color: Colors.lightBlueAccent.withOpacity(.4),
+                      child: ListTile(
+                        leading:Container(
+                          width: 200,
+                          child:  Text(widget.productDetailName,
+                          style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.grey,
-                            decoration: TextDecoration.lineThrough,
-                            decorationThickness: 2,
-                            fontSize: 18
-
+                            fontSize: 20,
+                        ),
+                           maxLines: 4,
                         ),),
-                        Text(
-                          "\$${widget.productDetailPrice}",style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red,
-                            fontSize: 19
 
-                        ),),
-                      ],
+                        subtitle: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+
+                            Text(
+                              "\$${widget.productDetailOldPrice}",style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey,
+                                decoration: TextDecoration.lineThrough,
+                                decorationThickness: 2,
+                                fontSize: 18
+
+                            ),),
+                            Text(
+                              "\$${widget.productDetailPrice}",style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.red,
+                                fontSize: 19
+
+                            ),),
+                          ],
+                        ),
+                      ),
                     ),
+
                   ),
                 ),
-
               ),
             ),
     //============Buy Now Row =============
