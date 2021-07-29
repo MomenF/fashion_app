@@ -27,19 +27,41 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.greenAccent,
-        body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-              Image.asset(
-          'assets/images/s.png',
-          height: 100,
-        ),
-              //Todo Text NAme App with Anew Fonts
-              SpinKitCircle(
-                  color: Colors.red,
-                ),
+        body: Container(
+          decoration: BoxDecoration(
+            gradient: SweepGradient(
+              colors: [Colors.yellowAccent,Colors.greenAccent,Colors.red,Colors.orangeAccent,Colors.blueAccent,Colors.yellowAccent],
+            )
+          ),
+          child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                Image.asset(
+            'assets/images/s.png',
+            height: 100,
+          ),
+                  Text("Fashion App",style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: "JuliusSansOne",
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 5,
+                      shadows: [
+                        Shadow(
+                            color: Colors.black,
+                            blurRadius: 4
+                        ),
+                      ]
 
-              ],
-    ));
+
+                  ),),
+                //Todo Text NAme App with Anew Fonts
+                SpinKitCircle(
+                    color: Colors.red,
+                  ),
+
+                ],
+    ),
+        ));
   }
 }

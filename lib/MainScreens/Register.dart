@@ -31,7 +31,21 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
-        title: Text("Registration Page "),
+        title: Text("Fashion App",style: TextStyle(
+            fontSize: 20,
+            fontFamily: "JuliusSansOne",
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 5,
+            shadows: [
+              Shadow(
+                  color: Colors.black,
+                  blurRadius: 4
+              ),
+            ]
+
+
+        ),),
         centerTitle: true,
         backgroundColor: Colors.orange,
       ),
@@ -47,29 +61,46 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Stack(
               alignment: AlignmentDirectional.center,
               children: [
-                Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 5,
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 50,
-                    vertical: 300,
-                  ) ,
-                  decoration: BoxDecoration(
-                      color: Colors.orange,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40),
+                Stack(
+                  alignment: AlignmentDirectional.topCenter,
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 5,
                       ),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black,
-                            offset: Offset.zero,
-                            spreadRadius: 5,
-                            blurRadius: 20)
-                      ]),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 50,
+                        vertical: 300,
+                      ) ,
+                      decoration: BoxDecoration(
+                          color: Colors.orange,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(40),
+                            topRight: Radius.circular(40),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black,
+                                offset: Offset.zero,
+                                spreadRadius: 5,
+                                blurRadius: 20)
+                          ]),
 
+                    ),
+                    Text("Registration Page",style: TextStyle(
+                        fontSize: 25,
+                        fontFamily: "Pacifico-Regular",
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        shadows: [
+                          Shadow(
+                              color: Colors.black,
+                              blurRadius: 10
+                          )
+                        ]
+                    ),)
+                  ],
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(

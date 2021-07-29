@@ -126,6 +126,7 @@ class SingleProduct extends StatelessWidget {
                 fontWeight: FontWeight.bold
               ),
                 maxLines: 3,
+                overflow: TextOverflow.ellipsis,
 
               ),
               trailing: Column(
@@ -145,7 +146,11 @@ class SingleProduct extends StatelessWidget {
               ),
             ),
           ),
-          child: Image.asset(productPic),
+          child: Column(
+            children: [
+              Image.asset(productPic),
+            ],
+          ),
         ),
       ),
     );
