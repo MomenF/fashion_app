@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
         width: double.infinity,
+        height: double.infinity,
         margin: const EdgeInsets.only(top: 20),
         padding: const EdgeInsets.symmetric(
           horizontal: 15,
@@ -44,59 +45,195 @@ class _HomePageState extends State<HomePage> {
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(90),
             )),
-        child: Column(
-          children: [
-            Text(
-              "All Categories",
-              style: TextStyle(
-                  color: Colors.red,
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                  shadows: [Shadow(color: Colors.black)]),
-            ),
-            Divider(
-              height: 25,
-            ),
-            InkWell(
-              onTap: (){
-                Navigator.pushNamed(context, "/fashionApp");
-              },
-              child: Container(
-                width: 300,
-                height: 100,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(15)),
-                child: Stack(
-                  alignment: AlignmentDirectional.center,
-                  children: [
-                    ClipRRect(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Text(
+                "All Categories",
+                style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                    shadows: [Shadow(color: Colors.black)]),
+              ),
+              Divider(
+                height: 25,
+              ),
+              //======== Fashion=============//
+              InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, "/fashionApp");
+                },
+                child: Container(
+                  width: 300,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      ClipRRect(
 
-                        child: Image.asset(
-                      "assets/images/fashionCat.gif",
-                      fit: BoxFit.fill,
-                      width: double.infinity,
-                    ),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
+                          child: Image.asset(
+                        "assets/images/fashionCat.gif",
+                        fit: BoxFit.fill,
+                        width: double.infinity,
+                      ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
 
-                    Text("Fashion Category",style: TextStyle(
-                        fontSize: 25,
-                        fontFamily: "Pacifico-Regular",
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        shadows: [
-                          Shadow(
-                              color: Colors.black,
-                              blurRadius: 15
-                          )
-                        ]
-                    ),)
-                  ],
+                      Text("Fashion Category",style: TextStyle(
+                          fontSize: 25,
+                          fontFamily: "Pacifico-Regular",
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: Colors.black,
+                                blurRadius: 15
+                            )
+                          ]
+                      ),)
+                    ],
+                  ),
                 ),
               ),
-            )
-          ],
+              SizedBox(
+                height: 25,
+              ),
+              //======== electrical Device=============//
+              InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, "/electronicApp");
+
+                },
+                child: Container(
+                  width: 300,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      ClipRRect(
+
+                        child: Image.asset(
+                          "assets/images/electronicsCat.gif",
+                          fit: BoxFit.fill,
+                          width: double.infinity,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+
+                      Text("Electrical devices",style: TextStyle(
+                          fontSize: 25,
+                          fontFamily: "Pacifico-Regular",
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: Colors.black,
+                                blurRadius: 15
+                            )
+                          ]
+                      ),)
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              //======== babes product=============//
+              InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, "/babyApp");
+                },
+                child: Container(
+                  width: 300,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      ClipRRect(
+
+                        child: Image.asset(
+                          "assets/images/babyCat.gif",
+                          fit: BoxFit.fill,
+                          width: double.infinity,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+
+                      Text("Baby Products",style: TextStyle(
+                          fontSize: 25,
+                          fontFamily: "Pacifico-Regular",
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: Colors.black,
+                                blurRadius: 15
+                            )
+                          ]
+                      ),)
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 25,
+              ),
+              //======== Phones product=============//
+              InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, "/phoneApp");
+
+                },
+                child: Container(
+                  width: 300,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Stack(
+                    alignment: AlignmentDirectional.center,
+                    children: [
+                      ClipRRect(
+
+                        child: Image.asset(
+                          "assets/images/phoneCat.gif",
+                          fit: BoxFit.fill,
+                          width: double.infinity,
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      Text("Phones Products",style: TextStyle(
+                          fontSize: 25,
+                          fontFamily: "Pacifico-Regular",
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          shadows: [
+                            Shadow(
+                                color: Colors.black,
+                                blurRadius: 15
+                            )
+                          ]
+                      ),)
+                    ],
+                  ),
+                ),
+              ),
+
+
+
+            ],
+          ),
         ),
       ),
     );

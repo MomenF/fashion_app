@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/Components/Categories.dart';
+import 'package:e_commerce_app/Components/Drower.dart';
 import 'package:e_commerce_app/Components/products.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -27,66 +28,7 @@ class _FashionScreenState extends State<FashionScreen> {
         title: Text("Fashion App"),
 
       ),
-      drawer: Drawer(
-
-        child: ListView(children: [
-          UserAccountsDrawerHeader(
-            accountEmail: Text("Momenm4123@gmail.com"),
-            accountName: Text("Momen Mahmoud"),
-            currentAccountPicture: CircleAvatar(
-              backgroundColor: Colors.grey,
-              child: Icon(Icons.person,color: Colors.white,),
-            ),
-
-          ),
-
-          ListTile(
-            onTap: (){
-              Navigator.pushNamed(context, "/home");
-            },
-            title: Text("All Categories ",style: TextStyle(color: Colors.blueAccent),),
-            leading: CircleAvatar(
-              backgroundColor: Colors.blueAccent,
-              child: Icon(Icons.home,color: Colors.white,),
-            ),
-
-          ),
-          Divider(
-            height: 10,
-            thickness: 3,
-          ),
-          ListTile(
-            onTap: (){
-              Navigator.pushNamed(context, "/fashionApp");
-            },
-            title: Text("Fashion Category ",style: TextStyle(color: Colors.teal),),
-            leading: CircleAvatar(
-              backgroundColor: Colors.teal,
-              child: Icon(Icons.category,color: Colors.white,),
-            ),
-
-          ),
-          Divider(
-            height: 10,
-            thickness: 3,
-          ),
-
-          ListTile(
-            onTap: (){
-              Navigator.pushNamedAndRemoveUntil(context, "/loginPage", (route) => false);
-            },
-            title: Text("Log out",style: TextStyle(color: Colors.red),),
-            leading: CircleAvatar(
-              backgroundColor: Colors.red,
-              child: Icon(Icons.logout,color: Colors.white,),
-            ),
-
-          ),
-        ]
-
-        ),
-
-      ),
+      drawer: Drower(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

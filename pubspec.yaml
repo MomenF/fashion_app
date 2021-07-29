@@ -31,7 +31,10 @@ dependencies:
   flutter_spinkit: ^5.0.0
   carousel_slider: ^4.0.0
   carousel_pro_nullsafety: ^1.0.2
-
+  http: ^0.13.3
+  introduction_screen: ^2.1.0
+  intro_slider: ^3.0.2
+  sqflite: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +55,9 @@ flutter:
   assets:
     - assets/images/
     - assets/images/products/
+    - assets/images/elect/
+    - assets/images/baby/
+    - assets/images/phones/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
