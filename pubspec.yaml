@@ -71,7 +71,9 @@ flutter:
     - family: JuliusSansOne
       fonts:
         - asset: assets/fonts/JuliusSansOne-Regular.ttf
-
+    - family: MarckScript
+      fonts:
+        - asset: assets/fonts/MarckScript-Regular.ttf
 
 
 
