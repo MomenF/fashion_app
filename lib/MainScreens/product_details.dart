@@ -29,6 +29,8 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
+    double heightMedia= MediaQuery.of(context).size.height;
+    double widthMedia= MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
@@ -47,9 +49,9 @@ class _ProductDetailsState extends State<ProductDetails> {
 
       ),
       body: Container(
-        margin: const EdgeInsets.only(
-          left: 5,
-          right: 5
+        margin:  EdgeInsetsDirectional.only(
+          start: widthMedia*.02,
+          end: widthMedia*.02
         ),
         child: ListView(
           children: [

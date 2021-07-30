@@ -3,6 +3,8 @@ import 'package:e_commerce_app/Components/Drower.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'babyProduct.dart';
+
 class BabyApp extends StatefulWidget {
   const BabyApp({Key? key}) : super(key: key);
 
@@ -60,6 +62,7 @@ class _BabyAppState extends State<BabyApp> {
           Divider(
             thickness: 3,
           ),
+          BabyProducts()
 
 
 

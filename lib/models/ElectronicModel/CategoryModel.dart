@@ -12,48 +12,48 @@
 /// price_final : 5720
 /// price_final_text : "5720 EGP"
 
-class ElectricModel {
-  int? _id;
+class CategoryModel {
+  num? _id;
   String? _name;
   String? _title;
-  int? _categoryId;
+  num? _categoryId;
   String? _description;
-  int? _price;
-  int? _discount;
+  num? _price;
+  num? _discount;
   String? _discountType;
   String? _currency;
-  int? _inStock;
+  num? _inStock;
   String? _avatar;
-  int? _priceFinal;
+  num? _priceFinal;
   String? _priceFinalText;
 
-  int? get id => _id;
+  num? get id => _id;
   String? get name => _name;
   String? get title => _title;
-  int? get categoryId => _categoryId;
+  num? get categoryId => _categoryId;
   String? get description => _description;
-  int? get price => _price;
-  int? get discount => _discount;
+  num? get price => _price;
+  num? get discount => _discount;
   String? get discountType => _discountType;
   String? get currency => _currency;
-  int? get inStock => _inStock;
+  num? get inStock => _inStock;
   String? get avatar => _avatar;
-  int? get priceFinal => _priceFinal;
+  num? get priceFinal => _priceFinal;
   String? get priceFinalText => _priceFinalText;
 
-  ElectricModel({
-      int? id, 
+  CategoryModel({
+    num? id,
       String? name, 
-      String? title, 
-      int? categoryId, 
-      String? description, 
-      int? price, 
-      int? discount, 
+      String? title,
+    num? categoryId,
+      String? description,
+    num? price,
+    num? discount,
       String? discountType, 
-      String? currency, 
-      int? inStock, 
-      String? avatar, 
-      int? priceFinal, 
+      String? currency,
+    num? inStock,
+      String? avatar,
+    num? priceFinal,
       String? priceFinalText}){
     _id = id;
     _name = name;
@@ -70,7 +70,7 @@ class ElectricModel {
     _priceFinalText = priceFinalText;
 }
 
-  ElectricModel.fromJson(dynamic json) {
+  CategoryModel.fromJson(Map<String,dynamic> json) {
     _id = json["id"];
     _name = json["name"];
     _title = json["title"];

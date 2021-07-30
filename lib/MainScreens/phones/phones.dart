@@ -3,6 +3,8 @@ import 'package:e_commerce_app/Components/Drower.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'PhoneProducts.dart';
+
 class PhonesApp extends StatefulWidget {
   const PhonesApp({Key? key}) : super(key: key);
 
@@ -61,6 +63,7 @@ class _PhonesAppState extends State<PhonesApp> {
           Divider(
             thickness: 3,
           ),
+          PhoneProducts()
 
 
 

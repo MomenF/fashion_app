@@ -1,5 +1,9 @@
 
 
+
+
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,18 +16,20 @@ class Setting extends StatefulWidget {
 
 class _SettingState extends State<Setting> {
   //Todo variables
-  // File? imageFile;
-  // final picker =ImagePicker();
+  File? _image;
+  final picker = ImagePicker();
 
-  // Future getImageByCamera()async{
-  //   final  image = await picker.pickImage(source: ImageSource.camera);
-  //   setState(() {
-  //     imageFile = image as File?;
-  //
-  //   });
-  // }
+  Future getImage(ImageSource source) async {
+    final pickedFile = await picker.pickImage(source: source);
 
-
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
 
 
   @override
@@ -79,7 +85,7 @@ class _SettingState extends State<Setting> {
                     elevation: 10,
                   ),
                 ),
-                Icon(Icons.person,size: 250,color: Colors.white,)
+                _image == null ? Icon(Icons.person,size: 250,color: Colors.white,) :Image( image: FileImage(_image!),),
               ],
             ),
            Container(
@@ -102,7 +108,7 @@ class _SettingState extends State<Setting> {
                           children: [
                             InkWell(
                               onTap: () {
-                                // getImageByCamera();
+                                getImage(ImageSource.camera);
                               },
                               child: Row(
                                 children: [
@@ -120,7 +126,7 @@ class _SettingState extends State<Setting> {
                             ),
                             InkWell(
                               onTap: () {
-                                // getImageByCamera();
+                                getImage(ImageSource.camera);
                               },
                               child: Row(
                                 children: [
