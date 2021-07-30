@@ -1,14 +1,31 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Setting extends StatefulWidget {
-  const Setting({Key? key}) : super(key: key);
 
   @override
   _SettingState createState() => _SettingState();
 }
 
 class _SettingState extends State<Setting> {
+  //Todo variables
+  // File? imageFile;
+  // final picker =ImagePicker();
+
+  // Future getImageByCamera()async{
+  //   final  image = await picker.pickImage(source: ImageSource.camera);
+  //   setState(() {
+  //     imageFile = image as File?;
+  //
+  //   });
+  // }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,36 +82,101 @@ class _SettingState extends State<Setting> {
                 Icon(Icons.person,size: 250,color: Colors.white,)
               ],
             ),
-            Container(
+           Container(
               height: 50,
               margin: const EdgeInsets.symmetric(
                 horizontal: 40
               ),
-              child: MaterialButton(
-                onPressed: (){},
-                color: Colors.grey,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                CircleAvatar(
-                backgroundColor: Colors.grey[300],
-                  child: Icon(Icons.camera_alt, color: Colors.white,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25),
+                child: MaterialButton(
+                  onPressed: (){
+                    setState(() {
+
+                    });
+                    showDialog(context: context, builder: (context){
+                      return AlertDialog(
+                        title: Text("Upload The profile Picture"),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                // getImageByCamera();
+                              },
+                              child: Row(
+                                children: [
+                                  Icon(Icons.camera_alt,color: Colors.blueAccent,),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  Text("Take Picture by Camera"),
+                                ],
+                              ),
+                            ),
+                            Divider(
+                              height:
+                              25,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                // getImageByCamera();
+                              },
+                              child: Row(
+                                children: [
+                                  Icon(Icons.image,color: Colors.blueAccent,),
+                                  SizedBox(
+                                    width: 15,
+                                  ),
+                                  Text("Import Picture from Gallery"),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                              onPressed: (){
+                                Navigator.pop(context);
+                              },
+                            child: Text("Cancel",style: TextStyle(
+                              color: Colors.blueAccent
+                            ),),
+
+                              )
+
+                        ],
+                      );
+                    });
+                  },
+                  color: Colors.red,
+                  child: Positioned(
+                    left: 0,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                    CircleAvatar(
+                    backgroundColor: Colors.blue[300],
+                      child: Icon(Icons.camera_alt, color: Colors.white,
+                      ),
+                    ),
+                     SizedBox(
+                       width: 5,
+                     ),
+                     Text("Upload Profile Picture",style: TextStyle(
+                          color: Colors.white,
+                        ),),
+
+                      ],
+                    ),
                   ),
                 ),
-                 SizedBox(
-                   width: 5,
-                 ),
-                 Text("Upload Profile Picture",style: TextStyle(
-                      color: Colors.white,
-                    ),),
-
-                  ],
-                ),
               ),
-            ),
+            ) ,
           ],
         ),
       ),
     );
   }
 }
+
