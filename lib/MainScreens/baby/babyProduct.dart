@@ -4,6 +4,8 @@ import 'package:e_commerce_app/models/ElectronicModel/CategoryModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../Components/AllProductDetails.dart';
+
 class BabyProducts extends StatefulWidget {
   const BabyProducts({Key? key}) : super(key: key);
 
@@ -18,7 +20,7 @@ class _BabyProductsState extends State<BabyProducts> {
 
   @override
   void initState() {
-    api.fetchElectronicData(3);
+    api.fetchData(3);
     // TODO: implement initState
     super.initState();
   }
@@ -26,7 +28,7 @@ class _BabyProductsState extends State<BabyProducts> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<CategoryModel?>?>(
-        future: api.fetchElectronicData(3),
+        future: api.fetchData(3),
         builder: (context, snap) {
           if (snap.connectionState != ConnectionState.done) {
             return CircularProgressIndicator();
@@ -42,43 +44,12 @@ class _BabyProductsState extends State<BabyProducts> {
 
               ),
               itemBuilder: (context, index) {
-                print("errrrrrrrrrrrrrrrrrrrror ");
-                return Expanded(
-                  child: Card(
-                    child: GridTile(
-                      child:CachedNetworkImage(
-                        imageUrl: '${model![index]!.avatar}',
-                      ) ,
-                      footer: Container(
-
-                        color: Colors.grey.withOpacity(.6),
-                        child: ListTile(
-                          title: Text("${model[index]!.name}",
-                            maxLines: 2,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18
-                            ),),
-                          trailing: Text("\$${model[index]!.price}",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                                color: Colors.blue,
-                                shadows: [
-                                  Shadow(
-                                      color: Colors.white,
-                                      blurRadius: 5,
-                                      offset: Offset.zero
-                                  )
-                                ]
-                            ),
-                          ),
-                        ),
-
-                      ),
-                    ),
-                  ),
-
+                return SingleProduct(
+                  productName: model![index]!.name ,
+                  Stock: model[index]!.inStock,
+                  productPrice:model[index]!.price ,
+                  productDiscribtion: model[index]!.description ,
+                  productPic:  model[index]!.avatar ,
                 );
               },
             );
@@ -90,4 +61,69 @@ class _BabyProductsState extends State<BabyProducts> {
           }
         });
   }
+}
+
+class SingleProduct extends StatelessWidget{
+  late final  productPic ;
+  late final  productPrice ;
+  late final  productName ;
+  late final  productDiscribtion ;
+  late final  Stock ;
+
+  SingleProduct({this.productPic, this.productPrice, this.productName,
+    this.productDiscribtion, this.Stock});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: (){
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AllProductDetails(
+          productName: this.productName ,
+          productPic: this.productPic ,
+          productDiscribtion:  this.productDiscribtion,
+          productPrice:  this.productPrice,
+          Stock: this.Stock ,
+        )));
+      },
+      child: Card(
+        child: GridTile(
+          child:CachedNetworkImage(
+            imageUrl: '${this.productPic}',
+          ) ,
+          footer: Container(
+
+            color: Colors.grey.withOpacity(.6),
+            child: ListTile(
+              title: Text("${this.productName}",
+                maxLines: 2,
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18
+                ),),
+              trailing: Text("\$${this.productPrice}",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Colors.blue,
+                    shadows: [
+                      Shadow(
+                          color: Colors.white,
+                          blurRadius: 5,
+                          offset: Offset.zero
+                      )
+                    ]
+                ),
+              ),
+            ),
+
+          ),
+        ),
+      ),
+
+    );
+  }
+
+
+
+
 }

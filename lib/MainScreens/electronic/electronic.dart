@@ -19,7 +19,7 @@ class _ElectronicAppState extends State<ElectronicApp> {
   RestApi api = RestApi();
   @override
   void initState() {
-    api.fetchElectronicData(3);
+    api.fetchData(3);
     // TODO: implement initState
     super.initState();
   }

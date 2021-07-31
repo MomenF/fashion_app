@@ -252,7 +252,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   fontSize: 20,
                 ),
               ),
-            )
+            ),
 
           ],
         ),

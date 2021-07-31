@@ -7,6 +7,7 @@ import 'MainScreens/Register.dart';
 import 'MainScreens/Setting.dart';
 import 'MainScreens/SplashScreen.dart';
 import 'MainScreens/FashionScreen.dart';
+import 'Components/AllProductDetails.dart';
 import 'MainScreens/baby/baby.dart';
 import 'MainScreens/electronic/electronic.dart';
 import 'MainScreens/phones/phones.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         "/Register" : (context)=> RegisterPage(),
         "/productDetails" : (context)=> ProductDetails(),
         "/setting" : (context)=> Setting(),
+        "/babyDetails" : (context)=> AllProductDetails(),
       },
     );
   }
