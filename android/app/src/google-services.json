@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1031450197676",
+    "project_id": "fashionapp-e6d19",
+    "storage_bucket": "fashionapp-e6d19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031450197676:android:da2fd094504e4c92986909",
+        "android_client_info": {
+          "package_name": "com.example.e_commerce_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031450197676-l39lhbocn1ivcvf7hbplic2gj792smn9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnRqY-aGPR5t91s5rNuSz8PRrSL1lZ21c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031450197676-l39lhbocn1ivcvf7hbplic2gj792smn9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

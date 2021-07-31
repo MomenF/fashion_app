@@ -1,5 +1,8 @@
+import 'package:e_commerce_app/Services/Firebase/Authentication.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 class LoginPage extends StatefulWidget {
   @override
@@ -12,6 +15,9 @@ class _LoginPageState extends State<LoginPage> {
   var passwordController = TextEditingController();
   bool showPassword = true;
   var formKey = GlobalKey<FormState>();
+  FireAuth? auth ;
+  FirebaseAuth error = FirebaseAuth.instance;
+
 
   @override
   void initState() {
@@ -143,15 +149,15 @@ class _LoginPageState extends State<LoginPage> {
                               keyboardType: TextInputType.emailAddress,
                               controller: emailController,
                               maxLines: 1,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return " please complete the empty Fields";
-                                } else if (value != "a") {
-                                  return "Wrong email address or username please try again";
-                                } else {
-                                  return null;
-                                }
-                              },
+                              // validator: (value) {
+                              //   if (value!.isEmpty) {
+                              //     return " please complete the empty Fields";
+                              //   } else if (value != error.currentUser!.email) {
+                              //     return "Wrong email address or username please try again";
+                              //   } else {
+                              //     return null;
+                              //   }
+                              // },
                             ),
                             /** Password Bar **/
                             SizedBox(
@@ -185,9 +191,9 @@ class _LoginPageState extends State<LoginPage> {
                               maxLength: 25,
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return " please complete the empty Fields";
-                                } else if (value != "0") {
-                                  return "Wrong Password please try again ";
+                                  return " This Fields Must not be empty";
+                                } else if (value != error.currentUser!.email) {
+                                  return "Wrong Email or Password ";
                                 } else {
                                   return null;
                                 }
@@ -221,6 +227,7 @@ class _LoginPageState extends State<LoginPage> {
                                 ),),
                                 onPressed: (){
                                   if(formKey.currentState!.validate()){
+                                    auth!.SignIn(email: emailController.text, password: passwordController.text);
                                     Navigator.pushNamedAndRemoveUntil(
                                         context, "/home", (route) => false);
                                   }
