@@ -17,26 +17,30 @@ class DbHelper{
     String path = join(await getDatabasesPath(), 'profile.db');
     _db = await openDatabase(path,version: 1,onCreate: (Database db, int v){
       //create all tables
-      db.execute("create table profile (id integer primary key autoincrement, name varchar(50), imgUrl text)");
+      db.execute("create table profile ( name varchar(50), imgUrl text)");
     });
     return _db;
   }
 
-  Future<int?> createCourse(SettingModel model) async{
+  Future<int?> createSetting(SettingModel model) async{
     Database? db = await createDatabase();
     //db.rawInsert('insert into courses')
     return db!.insert('profile', model.toMap());
   }
 
-  Future<List?> allCourses() async{
+  Future< SettingModel? > allSettings() async{
     Database? db = await createDatabase();
     //db.rawQuery("select * from courses")
-    return db!.query('profile');
+    SettingModel? model=new SettingModel();
+    for (Map<String ,dynamic> item in await db!.query("profile")){
+       model=SettingModel.fromMap(item);
+    }
+    return model;
   }
 
-  Future<int?> deleteCourse(int id) async{
+  Future<int?> deleteCourse(String name ,String imgUrl ) async{
     Database? db = await createDatabase();
-    return db!.delete('profile',where: 'id = ?',whereArgs:[id] );
+    return db!.delete('profile',where: 'name = ? and imgUrl = ?',whereArgs:[name,imgUrl] );
   }
 
 }

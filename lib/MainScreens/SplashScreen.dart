@@ -8,12 +8,22 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>  with SingleTickerProviderStateMixin{
+
+  late AnimationController controller ;
   //Todo Variables
 
   @override
   void initState() {
-    // TODO: implement initState
+   controller = AnimationController(
+     duration:  Duration( seconds:  3),
+       vsync: this);
+   controller.forward();
+   controller.addListener(() {
+     setState(() {
+     });
+     print(controller.value);
+   });
     super.initState();
     Timer(
         Duration(
@@ -47,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 height: double.infinity,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(.7)
+                color: Colors.orange.withOpacity(controller.value)
                 ),
               ),
               Column(

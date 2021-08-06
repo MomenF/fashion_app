@@ -1,30 +1,79 @@
+import 'dart:convert';
+import 'dart:io';
+import 'package:e_commerce_app/MainScreens/Setting.dart';
+import 'package:e_commerce_app/Services/SqlSetting/dbHelper.dart';
+import 'package:e_commerce_app/Services/SqlSetting/model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Drower extends StatefulWidget {
-  const Drower({Key? key}) : super(key: key);
 
   @override
   _DrowerState createState() => _DrowerState();
 }
 
 class _DrowerState extends State<Drower> {
+
+  //Todo Variables
+  DbHelper? helper;
+  SettingModel? profile;
+
+  @override
+  void initState() {
+    super.initState();
+    helper = DbHelper();
+    initDb();
+  }
+
+  void initDb() async{
+    profile=await helper!.allSettings();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(children: [
-        UserAccountsDrawerHeader(
-          accountEmail: Text("Momenm4123@gmail.com"),
-          accountName: Text("Momen Mahmoud"),
-          currentAccountPicture: CircleAvatar(
-            backgroundColor: Colors.grey,
-            child: Icon(
-              Icons.person,
-              color: Colors.white,
-            ),
-          ),
-        ),
-        //======== All Categories ===============//
+
+        FutureBuilder(
+          future: helper!.allSettings(),
+            builder: (context,AsyncSnapshot snap) {
+            if(snap.connectionState!= ConnectionState.done){
+              return UserAccountsDrawerHeader(
+                  accountEmail: Text("No Email found"),
+              accountName: Text( "No Name"  ),
+              currentAccountPicture: CircleAvatar(
+              backgroundColor: Colors.grey,
+              child :   Icon(
+              Icons.person ,
+              ), ) );
+            }
+            else if (snap.hasData){
+              return UserAccountsDrawerHeader(
+                accountEmail: Text("Momenm4123@gmail.com"),
+                accountName: Text("${
+                    profile == null ? "No Name" :
+                    profile!.name
+                }" ),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.grey,
+                  child : profile!.imgUrl  == null  || profile ==null ?  Icon(
+                    Icons.person ,
+                    color: Colors.white,
+                  )
+                      : Image.memory(base64Decode(profile!.imgUrl)),
+                ),
+              );
+            }
+            else{return Text("Error in Drawer");}
+
+
+            }),
+
+
+
+
+    // ======== All Categories ===============//
         ListTile(
           onTap: () {
             Navigator.pushNamed(context, "/home");

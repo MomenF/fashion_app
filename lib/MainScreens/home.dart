@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,27 +7,45 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation animation;
+
+
+  @override
+  void initState() {
+    controller = AnimationController(
+      duration: Duration(seconds: 5),
+      vsync: this,
+
+    );
+    controller.forward();
+    // controller.addStatusListener((status) {
+    //   if(status == AnimationStatus.completed){
+    //     controller.reverse(from: 1.0);
+    //   }else if (status == AnimationStatus.dismissed){
+    //     controller.forward();
+    //   }
+    // });
+
+    controller.addListener(() {
+      setState(() {});
+      controller.value;
+    });
+
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.red.withOpacity(controller.value),
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text(
-          "Fashion app ",
-          style: TextStyle(
-              fontSize: 25,
-              fontFamily: "MarckScript",
-              color: Colors.yellowAccent,
-              fontWeight: FontWeight.bold,
-              shadows: [
-                // Shadow(
-                //     color: Colors.black,
-                //     blurRadius: 10
-                // )
-              ]),
-        ),
+        title: TextWordAnimated(title: "Fashion App ",),
         elevation: 0,
       ),
       body: Container(
@@ -38,7 +57,7 @@ class _HomePageState extends State<HomePage> {
           vertical: 15,
         ),
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.white.withOpacity(controller.value),
             boxShadow: [
               BoxShadow(color: Colors.black.withOpacity(.5), blurRadius: 12)
             ],
@@ -48,25 +67,18 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text(
-                "All Categories",
-                style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    shadows: [Shadow(color: Colors.black)]),
-              ),
+              categoryWord(),
               Divider(
                 height: 25,
               ),
               //======== Fashion=============//
               InkWell(
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, "/fashionApp");
                 },
                 child: Container(
-                  width: 300,
-                  height: 100,
+                  width: animation.value * 300,
+                  height: animation.value * 100,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(15)),
@@ -75,15 +87,15 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       ClipRRect(
 
-                          child: Image.asset(
-                        "assets/images/fashionCat.gif",
-                        fit: BoxFit.fill,
-                        width: double.infinity,
-                      ),
+                        child: Image.asset(
+                          "assets/images/fashionCat.gif",
+                          fit: BoxFit.fill,
+                          width: double.infinity,
+                        ),
                         borderRadius: BorderRadius.circular(15),
                       ),
 
-                      Text("Fashion Category",style: TextStyle(
+                      Text("Fashion Category", style: TextStyle(
                           fontSize: 25,
                           fontFamily: "Pacifico-Regular",
                           color: Colors.white,
@@ -104,13 +116,12 @@ class _HomePageState extends State<HomePage> {
               ),
               //======== electrical Device=============//
               InkWell(
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, "/electronicApp");
-
                 },
                 child: Container(
-                  width: 300,
-                  height: 100,
+                  width: animation.value * 300,
+                  height: animation.value * 100,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(15)),
@@ -127,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                         borderRadius: BorderRadius.circular(15),
                       ),
 
-                      Text("Electrical devices",style: TextStyle(
+                      Text("Electrical devices", style: TextStyle(
                           fontSize: 25,
                           fontFamily: "Pacifico-Regular",
                           color: Colors.white,
@@ -148,12 +159,12 @@ class _HomePageState extends State<HomePage> {
               ),
               //======== babes product=============//
               InkWell(
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, "/babyApp");
                 },
                 child: Container(
-                  width: 300,
-                  height: 100,
+                  width: animation.value * 300,
+                  height: animation.value * 100,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(15)),
@@ -170,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                         borderRadius: BorderRadius.circular(15),
                       ),
 
-                      Text("Baby Products",style: TextStyle(
+                      Text("Baby Products", style: TextStyle(
                           fontSize: 25,
                           fontFamily: "Pacifico-Regular",
                           color: Colors.white,
@@ -191,13 +202,12 @@ class _HomePageState extends State<HomePage> {
               ),
               //======== Phones product=============//
               InkWell(
-                onTap: (){
+                onTap: () {
                   Navigator.pushNamed(context, "/phoneApp");
-
                 },
                 child: Container(
-                  width: 300,
-                  height: 100,
+                  width: animation.value * 300,
+                  height: animation.value * 100,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),
                       borderRadius: BorderRadius.circular(15)),
@@ -213,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         borderRadius: BorderRadius.circular(15),
                       ),
-                      Text("Phones Products",style: TextStyle(
+                      Text("Phones Products", style: TextStyle(
                           fontSize: 25,
                           fontFamily: "Pacifico-Regular",
                           color: Colors.white,
@@ -231,11 +241,89 @@ class _HomePageState extends State<HomePage> {
               ),
 
 
-
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+
+Widget categoryWord() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+      const SizedBox(width: 20.0, height: 100.0),
+        const Text(
+                      'All Item',
+                      style: TextStyle(
+                          fontSize: 30.0 , color: Colors.red , fontWeight: FontWeight.bold),
+                    ),
+  const SizedBox(width: 20.0, height: 100.0),
+        DefaultTextStyle(
+              style: const TextStyle(
+                color: Colors.deepOrange,
+              fontSize: 30.0,
+
+
+              ),
+          child: AnimatedTextKit(
+
+            repeatForever: true,
+            stopPauseOnTap: true,
+            animatedTexts: [
+              RotateAnimatedText('Categories'),
+              RotateAnimatedText('Fashion'),
+            RotateAnimatedText('Electronic Devices'),
+            RotateAnimatedText('Baby Products'),
+            RotateAnimatedText('Phone Products',),
+            ],
+                onTap: () {
+                print("Tap Event");
+                            },
+                            ),
+                            ),
+                            ],
+                            );
+                            }
+class TextWordAnimated extends StatelessWidget {
+  String? title;
+  TextWordAnimated({
+    required  this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 250.0,
+          child: DefaultTextStyle(
+            style: const TextStyle(
+                fontSize: 25,
+                fontFamily: "Pacifico-Regular",
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+
+                shadows: [
+                  Shadow(color: Colors.black, blurRadius: 10)
+                ]),
+            child: AnimatedTextKit(
+              repeatForever: true,
+              animatedTexts: [
+                TyperAnimatedText("$title",textAlign: TextAlign.center),
+              ],
+              onTap: () {
+                print("Tap Event");
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

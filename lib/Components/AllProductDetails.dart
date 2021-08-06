@@ -1,6 +1,10 @@
+import 'dart:ffi';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_app/Components/Drower.dart';
 import 'package:e_commerce_app/Services/ApiServices/ApiMethod.dart';
+import 'package:e_commerce_app/Services/SqlSetting/PurchaseDatabase.dart';
+import 'package:e_commerce_app/Services/SqlSetting/PurchaseModel.dart';
 import 'package:e_commerce_app/models/ElectronicModel/CategoryModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +15,7 @@ class AllProductDetails extends StatefulWidget {
   _AllProductDetailsState createState() => _AllProductDetailsState();
 
   late final  productPic ;
-  late final  productPrice ;
+  late num?  productPrice ;
   late final  productName ;
   late final  productDiscribtion ;
   late final  Stock ;
@@ -23,18 +27,38 @@ class AllProductDetails extends StatefulWidget {
 }
 
 
-class _AllProductDetailsState extends State<AllProductDetails> {
+class _AllProductDetailsState extends State<AllProductDetails> with SingleTickerProviderStateMixin{
+
+
+  late AnimationController controller ;
 
   //Todo Variables
   RestApi api = RestApi();
    int itemCount = 1 ;
+   PurchaseModel? model;
+  PurchaseDatabase? helper ;
+  // num totalPrice = widget.productPrice * itemCount ;
 
 
   @override
   void initState() {
+    controller = AnimationController(
+      upperBound: widget.productPrice!.toDouble(),
+      duration: Duration(
+          seconds: 3),
+      vsync: this,);
+    controller.forward();
+    controller.addListener(() {
+      setState(() {
+
+      });
+      print(controller.value);
+    });
+
     api.fetchData(3);
     // TODO: implement initState
     super.initState();
+    helper = PurchaseDatabase();
   }
 
 
@@ -48,7 +72,7 @@ class _AllProductDetailsState extends State<AllProductDetails> {
       ),
       body: Container(
       child: Container(
-        margin: const EdgeInsetsDirectional.all(5),
+        margin: const EdgeInsets.all(5),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -77,7 +101,7 @@ class _AllProductDetailsState extends State<AllProductDetails> {
                         trailing: Container(
                           color: Colors.red,
                           child: Text(
-                            "\$${widget.productPrice}",style: TextStyle(
+                            "\$${controller.value.toInt()}",style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                               fontSize: 19,
@@ -99,7 +123,19 @@ class _AllProductDetailsState extends State<AllProductDetails> {
                     Expanded(
                       child: MaterialButton(
                         color: Colors.red,
-                        onPressed: (){},
+                        onPressed: () async {
+                          PurchaseModel simple = PurchaseModel(
+                            {
+                              "name":widget.productName,
+                              "price":widget.productPrice,
+                              "pic":widget.productPic,
+                              "quantity":widget.Stock,
+                            }
+                          );
+                         int? id = await helper!.createPurchase(simple);
+                                Navigator.pushNamed(context, "PurchaseList");
+
+                        },
                         child: Text("Buy Now",style: TextStyle(color: Colors.white),),
                       ),
                     ),
@@ -129,7 +165,7 @@ class _AllProductDetailsState extends State<AllProductDetails> {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText:" "
-                            "${ (widget.productPrice * itemCount).toString()} EGP",
+                            "${ (controller.value.toInt() * itemCount).toString()} EGP",
                         labelStyle: TextStyle(
                           color: Colors.black
                       )
