@@ -17,11 +17,19 @@ class PurchaseModel {
 
   String? get pic => _pic;
 
-  dynamic get prince => _price;
+  num get price => _price;
 
   String? get name => _name;
 
   int? get id => _id;
+
+  PurchaseModel.fromMap(Map<String, dynamic> data){
+    _id = data['id'];
+    _name = data['name'];
+    _price = data['price'];
+    _pic = data['pic'];
+    _quantity = data['quantity'];
+  }
 
   Map<String,dynamic> toMap()=> { "id": _id, "name": _name , "price" : _price , "pic":_pic, "quantity": _quantity };
 

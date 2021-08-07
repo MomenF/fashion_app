@@ -18,8 +18,14 @@ class PurchaseDatabase{
     String path = join(await getDatabasesPath(), 'purchase.db');
     _db = await openDatabase(path,version: 1,onCreate: (Database db, int v){
       //create all tables
-     return db.execute("create table purchase ( id integer primary key autoincrement , name varchar(50), price varchar(50) , pic varchar(250), quantity integer )");
+      print("Eldata weslat lel data base 5alas");
+
+      return db.execute("create table purchase ( id integer primary key autoincrement , name varchar(250), price integer , pic varchar(250), quantity integer )");
+
+
     });
+    print("Eldata weslat lel data base 5alas 2 ");
+
     return _db;
   }
 
@@ -35,6 +41,7 @@ class PurchaseDatabase{
     //db.rawQuery("select * from courses")
     print("database is all done ");
     return db!.query('purchase');
+    print("database inserted Succesfully");
   }
 
   Future<int?> deleteCourse(int id ) async{

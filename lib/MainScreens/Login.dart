@@ -42,9 +42,10 @@ class _LoginPageState extends State<LoginPage>
   //
   // }
 
-void validation (){
-  formKey.currentState!.validate();
-}
+  void validation() {
+    formKey.currentState!.validate();
+  }
+
   @override
   void initState() {
     controller = AnimationController(
@@ -256,44 +257,48 @@ void validation (){
                                 borderRadius: BorderRadius.circular(25),
                               ),
                               child: MaterialButton(
-                                child: TextWordBar(
-                                  title: "Sign in",
-                                ),
-                                onPressed: ()  {
-                                  print("Ckick henaaa Ya hamada");
-
-                                     FirebaseAuth.instance.signInWithEmailAndPassword(
+                                  child: TextWordBar(
+                                    title: "Sign in",
+                                  ),
+                                  onPressed: () async {
+                                    FirebaseAuth.instance
+                                        .signInWithEmailAndPassword(
                                       email: emailController.text.trim(),
                                       password: passwordController.text.trim(),
-                                    ).then(  (value) {  if(value.user!= null){
-                                      Navigator.pushNamedAndRemoveUntil(
-                                          context, "/home", (route) => false); } } ).catchError((e){
+                                    )
+                                        .then((value) {
+                                      if (value.user != null) {
+                                        setState(() {
+
+                                        });
+                                        Navigator.pushNamedAndRemoveUntil(
+                                            context, "/home", (route) => false);
+                                      }
+                                    }).catchError((e) {
                                       if (e.code == 'user-not-found') {
                                         print('No user found for that email.');
                                         setState(() {
-                                          // userfound = false ;
-                                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                              content: Text(
-                                                  "No user found for that email.")));
+
                                         });
+                                        // userfound = false ;
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    "No user found for that email.")));
                                       } else if (e.code == 'wrong-password') {
-                                        print('Wrong password provided for that user.');
+                                        print(
+                                            'Wrong password provided for that user.');
                                         setState(() {
-                                          // userfound = false ;
-                                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                              content: Text(
-                                                  "Wrong password provided for that user.")));
-                                        }); } });
 
-
-
-
-
-
-
-                                  }
-
-                              ),
+                                        });
+                                        // userfound = false ;
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content: Text(
+                                                    "Wrong password provided for that user.")));
+                                      }
+                                    });
+                                  }),
                             ),
                             SizedBox(
                               height: 10,

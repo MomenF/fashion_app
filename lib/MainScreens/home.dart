@@ -251,17 +251,18 @@ class _HomePageState extends State<HomePage>
 
 
 Widget categoryWord() {
-  return Row(
+  return Column(
     mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-      const SizedBox(width: 20.0, height: 100.0),
+      const SizedBox(width: 20.0, height: 20.0),
         const Text(
-                      'All Item',
+                      'All Cateogries ',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 30.0 , color: Colors.red , fontWeight: FontWeight.bold),
                     ),
-  const SizedBox(width: 20.0, height: 100.0),
+  const SizedBox(width: 20.0, height: 5.0),
         DefaultTextStyle(
               style: const TextStyle(
                 color: Colors.deepOrange,

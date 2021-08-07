@@ -46,6 +46,7 @@ class MyApp extends StatelessWidget {
         "/setting" : (context)=> Setting(),
         "/babyDetails" : (context)=> AllProductDetails(),
         "/purchaseAll" : (context)=> PurchaseList(),
+        PurchaseList.id : (context)=> PurchaseList(),
       },
     );
   }

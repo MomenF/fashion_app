@@ -274,7 +274,7 @@ packages:
       name: image_picker
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.8.3"
+    version: "0.8.3+1"
   image_picker_for_web:
     dependency: transitive
     description:

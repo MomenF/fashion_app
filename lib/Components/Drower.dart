@@ -6,6 +6,8 @@ import 'package:e_commerce_app/Services/SqlSetting/model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'PurcaseList.dart';
+
 class Drower extends StatefulWidget {
 
   @override
@@ -94,6 +96,25 @@ class _DrowerState extends State<Drower> {
           height: 10,
           thickness: 3,
         ),
+        //==============================//
+        Divider(
+          height: 10,
+        ),
+        ListTile(
+          onTap: () {
+            Navigator.pushNamed(context, PurchaseList.id);
+          },
+          title: Text(
+            "Cart List ",
+            style: TextStyle(color: Colors.blueAccent),
+          ),
+          leading: Icon(
+            Icons.shopping_cart,
+            color: Colors.black,
+            size: 50,
+
+          ),
+        ),
         //======== Fashion App ===============//
         ListTile(
           onTap: () {
@@ -103,18 +124,8 @@ class _DrowerState extends State<Drower> {
             "Fashion Category ",
             style: TextStyle(color: Colors.teal),
           ),
-          leading: CircleAvatar(
-            backgroundColor: Colors.teal,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(25),
-                child: Positioned(
-                  top: 0,
-                  left: 0,
-                  child: Image.asset(
-              "assets/images/Jacket.png",
-              height: 30,
-            ),
-                )),
+          leading: Image.asset(
+          "assets/images/Jacket.png", height: 100,width: 50,
           ),
         ),
         Divider(
@@ -129,13 +140,7 @@ class _DrowerState extends State<Drower> {
             "Electrical Devices",
             style: TextStyle(color: Colors.teal),
           ),
-          leading: CircleAvatar(
-            backgroundColor: Colors.teal,
-            child: Icon(
-              Icons.category,
-              color: Colors.white,
-            ),
-          ),
+          leading: Image.asset("assets/images/drawer/electricDevices.png", height: 100,width: 50,)
         ),
         Divider(
           height: 10,
@@ -149,13 +154,7 @@ class _DrowerState extends State<Drower> {
             "Babes Products",
             style: TextStyle(color: Colors.teal),
           ),
-          leading: CircleAvatar(
-            backgroundColor: Colors.teal,
-            child: Icon(
-              Icons.category,
-              color: Colors.white,
-            ),
-          ),
+            leading: Image.asset("assets/images/drawer/baby.png", height: 100,width: 50,)
         ),
         Divider(
           height: 10,
@@ -169,13 +168,7 @@ class _DrowerState extends State<Drower> {
             "Phones Devices",
             style: TextStyle(color: Colors.teal),
           ),
-          leading: CircleAvatar(
-            backgroundColor: Colors.teal,
-            child: Icon(
-              Icons.category,
-              color: Colors.white,
-            ),
-          ),
+            leading: Image.asset("assets/images/drawer/phone.png" , height: 100,width: 50,)
         ),
         //======== Setting===============//
         Divider(
@@ -199,11 +192,9 @@ class _DrowerState extends State<Drower> {
           ),
         ),
         //======== Log Out ===============//
-
         Divider(
           height: 10,
         ),
-
         ListTile(
           onTap: () {
             Navigator.pushNamedAndRemoveUntil(

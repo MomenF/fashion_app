@@ -9,13 +9,15 @@ import 'package:e_commerce_app/models/ElectronicModel/CategoryModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'PurcaseList.dart';
+
 class AllProductDetails extends StatefulWidget {
 
   @override
   _AllProductDetailsState createState() => _AllProductDetailsState();
 
   late final  productPic ;
-  late num?  productPrice ;
+  late int?  productPrice ;
   late final  productName ;
   late final  productDiscribtion ;
   late final  Stock ;
@@ -30,7 +32,7 @@ class AllProductDetails extends StatefulWidget {
 class _AllProductDetailsState extends State<AllProductDetails> with SingleTickerProviderStateMixin{
 
 
-  late AnimationController controller ;
+  // late AnimationController controller ;
 
   //Todo Variables
   RestApi api = RestApi();
@@ -42,18 +44,18 @@ class _AllProductDetailsState extends State<AllProductDetails> with SingleTicker
 
   @override
   void initState() {
-    controller = AnimationController(
-      upperBound: widget.productPrice!.toDouble(),
-      duration: Duration(
-          seconds: 3),
-      vsync: this,);
-    controller.forward();
-    controller.addListener(() {
-      setState(() {
-
-      });
-      print(controller.value);
-    });
+    // controller = AnimationController(
+    //   upperBound: widget.productPrice!.toDouble(),
+    //   duration: Duration(
+    //       seconds: 3),
+    //   vsync: this,);
+    // controller.forward();
+    // controller.addListener(() {
+    //   setState(() {
+    //
+    //   });
+    //   print(controller.value);
+    // });
 
     api.fetchData(3);
     // TODO: implement initState
@@ -101,7 +103,7 @@ class _AllProductDetailsState extends State<AllProductDetails> with SingleTicker
                         trailing: Container(
                           color: Colors.red,
                           child: Text(
-                            "\$${controller.value.toInt()}",style: TextStyle(
+                            "\$${widget.productPrice}",style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                               fontSize: 19,
@@ -132,8 +134,10 @@ class _AllProductDetailsState extends State<AllProductDetails> with SingleTicker
                               "quantity":widget.Stock,
                             }
                           );
+                          print("Ana Geeet");
                          int? id = await helper!.createPurchase(simple);
-                                Navigator.pushNamed(context, "PurchaseList");
+                         print("$id the data in model");
+                         Navigator.pushNamed(context, PurchaseList.id);
 
                         },
                         child: Text("Buy Now",style: TextStyle(color: Colors.white),),
@@ -165,7 +169,7 @@ class _AllProductDetailsState extends State<AllProductDetails> with SingleTicker
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         labelText:" "
-                            "${ (controller.value.toInt() * itemCount).toString()} EGP",
+                            "${ (widget.productPrice! * itemCount).toString()} EGP",
                         labelStyle: TextStyle(
                           color: Colors.black
                       )
