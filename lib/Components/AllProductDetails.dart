@@ -17,10 +17,12 @@ class AllProductDetails extends StatefulWidget {
   _AllProductDetailsState createState() => _AllProductDetailsState();
 
   late final  productPic ;
-  late int?  productPrice ;
+   late int?  productPrice ;
   late final  productName ;
   late final  productDiscribtion ;
   late final  Stock ;
+  int? getPrice() => this.productPrice ;
+
 
   AllProductDetails({this.productPic, this.productPrice, this.productName,
     this.productDiscribtion, this.Stock});
@@ -39,8 +41,7 @@ class _AllProductDetailsState extends State<AllProductDetails> with SingleTicker
    int itemCount = 1 ;
    PurchaseModel? model;
   PurchaseDatabase? helper ;
-  // num totalPrice = widget.productPrice * itemCount ;
-
+  AllProductDetails? details ;
 
   @override
   void initState() {
@@ -144,7 +145,7 @@ class _AllProductDetailsState extends State<AllProductDetails> with SingleTicker
                       ),
                     ),
                     IconButton(onPressed: (){
-
+                    Navigator.pushNamed(context, PurchaseList.id);
                     }, icon: Icon(Icons.shopping_cart_outlined,color: Colors.red,)),
                     IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border,color: Colors.red,)),
                   ],
@@ -168,7 +169,7 @@ class _AllProductDetailsState extends State<AllProductDetails> with SingleTicker
                     child: TextFormField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText:" "
+                        labelText:
                             "${ (widget.productPrice! * itemCount).toString()} EGP",
                         labelStyle: TextStyle(
                           color: Colors.black

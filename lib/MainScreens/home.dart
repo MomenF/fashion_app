@@ -251,43 +251,45 @@ class _HomePageState extends State<HomePage>
 
 
 Widget categoryWord() {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-      const SizedBox(width: 20.0, height: 20.0),
-        const Text(
-                      'All Cateogries ',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 30.0 , color: Colors.red , fontWeight: FontWeight.bold),
-                    ),
-  const SizedBox(width: 20.0, height: 5.0),
-        DefaultTextStyle(
-              style: const TextStyle(
-                color: Colors.deepOrange,
-              fontSize: 30.0,
+  return Container(
+    height: 135,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+        // const SizedBox(width: 20.0, height: 20.0),
+          const Text(
+                        'All Cateogries ',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 30.0 , color: Colors.red , fontWeight: FontWeight.bold),
+                      ),
+    // const SizedBox(width: 20.0, height: 5.0),
+          DefaultTextStyle(
+                style: const TextStyle(
+                  color: Colors.blue,
+                fontSize: 30.0,
 
 
-              ),
-          child: AnimatedTextKit(
+                ),
+            child: AnimatedTextKit(
 
-            repeatForever: true,
-            stopPauseOnTap: true,
-            animatedTexts: [
-              RotateAnimatedText('Categories'),
-              RotateAnimatedText('Fashion'),
-            RotateAnimatedText('Electronic Devices'),
-            RotateAnimatedText('Baby Products'),
-            RotateAnimatedText('Phone Products',),
-            ],
-                onTap: () {
-                print("Tap Event");
-                            },
-                            ),
-                            ),
-                            ],
-                            );
+              repeatForever: true,
+              stopPauseOnTap: true,
+              animatedTexts: [
+                RotateAnimatedText('Fashion Category'),
+              RotateAnimatedText('Electronic Devices'),
+              RotateAnimatedText('Baby Products'),
+              RotateAnimatedText('Phone Products',),
+              ],
+                  onTap: () {
+                  print("Tap Event");
+                              },
+                              ),
+                              ),
+                              ],
+                              ),
+  );
                             }
 class TextWordAnimated extends StatelessWidget {
   String? title;

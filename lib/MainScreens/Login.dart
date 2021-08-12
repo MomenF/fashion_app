@@ -125,8 +125,13 @@ class _LoginPageState extends State<LoginPage>
                                     blurRadius: 20)
                               ]),
                         ),
-                        TextWordAnimated(
-                          title: "Login Page",
+                        Text(
+                           "Login Page",style: TextStyle(
+                fontSize: 22,
+                fontFamily: "Pacifico-Regular",
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                shadows: [Shadow(color: Colors.black, blurRadius: 10)]),
                         ),
                       ],
                     ),
@@ -257,8 +262,12 @@ class _LoginPageState extends State<LoginPage>
                                 borderRadius: BorderRadius.circular(25),
                               ),
                               child: MaterialButton(
-                                  child: TextWordBar(
-                                    title: "Sign in",
+                                  child: Text(
+                                    "Sign in",style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      shadows: [Shadow(color: Colors.black, blurRadius: 10)]),
                                   ),
                                   onPressed: () async {
                                     FirebaseAuth.instance
@@ -311,7 +320,11 @@ class _LoginPageState extends State<LoginPage>
                                 borderRadius: BorderRadius.circular(25),
                               ),
                               child: MaterialButton(
-                                child: TextWordBar(title: "Sign up"),
+                                child: Text( "Sign up" ,style:  TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    shadows: [Shadow(color: Colors.black, blurRadius: 10)]),) ,
                                 onPressed: () {
                                   Navigator.pushNamed(context, "/Register");
                                 },
@@ -335,78 +348,78 @@ class _LoginPageState extends State<LoginPage>
   }
 }
 
-class TextWordAnimated extends StatelessWidget {
-  String? title;
+// class TextWordAnimated extends StatelessWidget {
+//   String? title;
+//
+//   TextWordAnimated({
+//     required this.title,
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         SizedBox(
+//           width: 250.0,
+//           child: DefaultTextStyle(
+//             style: const TextStyle(
+//                 fontSize: 22,
+//                 fontFamily: "Pacifico-Regular",
+//                 color: Colors.white,
+//                 fontWeight: FontWeight.bold,
+//                 shadows: [Shadow(color: Colors.black, blurRadius: 10)]),
+//             child: AnimatedTextKit(
+//               repeatForever: true,
+//               animatedTexts: [
+//                 TyperAnimatedText("$title", textAlign: TextAlign.center),
+//               ],
+//               onTap: () {
+//                 print("Tap Event");
+//               },
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
-  TextWordAnimated({
-    required this.title,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: 250.0,
-          child: DefaultTextStyle(
-            style: const TextStyle(
-                fontSize: 22,
-                fontFamily: "Pacifico-Regular",
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                shadows: [Shadow(color: Colors.black, blurRadius: 10)]),
-            child: AnimatedTextKit(
-              repeatForever: true,
-              animatedTexts: [
-                TyperAnimatedText("$title", textAlign: TextAlign.center),
-              ],
-              onTap: () {
-                print("Tap Event");
-              },
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class TextWordBar extends StatelessWidget {
-  String? title;
-
-  TextWordBar({
-    required this.title,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: 250.0,
-          child: DefaultTextStyle(
-            style: const TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                shadows: [Shadow(color: Colors.black, blurRadius: 10)]),
-            child: AnimatedTextKit(
-              repeatForever: true,
-              animatedTexts: [
-                TyperAnimatedText("$title", textAlign: TextAlign.center),
-              ],
-              onTap: () {
-                print("Tap Event");
-              },
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
+// class TextWordBar extends StatelessWidget {
+//   String? title;
+//
+//   TextWordBar({
+//     required this.title,
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//         SizedBox(
+//           width: 250.0,
+//           child: DefaultTextStyle(
+//             style: const TextStyle(
+//                 fontSize: 20,
+//                 color: Colors.white,
+//                 fontWeight: FontWeight.bold,
+//                 shadows: [Shadow(color: Colors.black, blurRadius: 10)]),
+//             child: AnimatedTextKit(
+//               repeatForever: true,
+//               animatedTexts: [
+//                 TyperAnimatedText("$title", textAlign: TextAlign.center),
+//               ],
+//               onTap: () {
+//                 print("Tap Event");
+//               },
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
 /*
 * Text(
